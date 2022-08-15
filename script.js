@@ -28,8 +28,8 @@ var makeDeck = function () {
   // Initialise an empty deck array
   var cardDeck = [];
   // Initialise an array of the 4 suits in our deck. We will loop over this array.
-  var suits = ["hearts", "diamonds", "clubs", "spades"];
-
+  var suits = ["♥", "♦", "♣", "♠"];
+  //clubs (♣), diamonds (♦), hearts (♥) and spades (♠)
   // Loop over the suits array
   var suitIndex = 0;
   while (suitIndex < suits.length) {
@@ -86,8 +86,8 @@ var cardDeck = shuffleCards(newDeck);
 var playerHands = [];
 var compHands = [];
 var output = "";
-var playerCards = "Player has:";
-var compCards = "Computer has:";
+var playerCards = "Player has ";
+var compCards = "Computer has ";
 var playAgainMsg = " Please refresh to play again.";
 
 var checkWinner = function (handsPlayer, handsComp) {
@@ -97,14 +97,14 @@ var checkWinner = function (handsPlayer, handsComp) {
   for (var i = 0; i < handsPlayer.length; i += 1) {
     playerTotal += handsPlayer[i].rank;
     playerCards =
-      playerCards + ` ${handsPlayer[i].name} of ${handsPlayer[i].suit}`;
+      playerCards + `${handsPlayer[i].name} ${handsPlayer[i].suit}, `;
   }
-  playerCards = playerCards + ` with sum ${playerTotal}.`;
+  playerCards = playerCards + `with sum ${playerTotal}.`;
   for (var i = 0; i < handsComp.length; i += 1) {
     compTotal += handsComp[i].rank;
-    compCards = compCards + ` ${handsComp[i].name} of ${handsComp[i].suit}`;
+    compCards = compCards + `${handsComp[i].name} ${handsComp[i].suit}, `;
   }
-  compCards = compCards + ` with sum ${compTotal}.`;
+  compCards = compCards + `with sum ${compTotal}.`;
 
   if (playerTotal == compTotal) {
     output = "A tie between computer and player!" + playAgainMsg;
